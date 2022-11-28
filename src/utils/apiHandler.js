@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useLocalStorage } from '../hooks';
 
 const apiRequestHandler = async ({ data, method, url }) => {
-    const baseUrl = 'https://simer.wmdd4950.com/project/api/v1' + url;
+    const baseUrl = 'http://localhost:8000/api/v1' + url;
     const { getValueFor } = useLocalStorage();
     const token = (await getValueFor('token')) || '';
 
@@ -10,9 +10,9 @@ const apiRequestHandler = async ({ data, method, url }) => {
         method: method.toLowerCase(),
         data,
         url: baseUrl,
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
+        // headers: {
+        //     Authorization: `Bearer ${token}`,
+        // },
     };
 
     try {
